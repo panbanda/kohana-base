@@ -3,12 +3,11 @@
 class Controller_Base_Site extends Controller_Template {
 	
 	// Variables that effect the view
-	protected $scripts;
-	protected $stylesheets;
-
+	protected $_scripts;
+	protected $_stylesheets;
+	
 	public $template = 'layouts/default';
 	public $session;
-	public $user;
 
 	public function before()
 	{
@@ -39,8 +38,8 @@ class Controller_Base_Site extends Controller_Template {
 		{
 			$config = Kohana::$config->load('app');
 			
-			$this->scripts = $config->scripts;
-			$this->stylesheets = $config->stylesheets;
+			$this->_scripts = $config->scripts;
+			$this->_stylesheets = $config->stylesheets;
 		}
 	}
 
@@ -51,8 +50,8 @@ class Controller_Base_Site extends Controller_Template {
 		{
 			// Update template variables
 			$this->template
-				->set('scripts', (array) $this->scripts)
-				->set('stylesheets', (array) $this->stylesheets)
+				->set('scripts', (array) $this->_scripts)
+				->set('stylesheets', (array) $this->_stylesheets)
 				->set('content', $this->view);
 		}
 		
@@ -69,7 +68,7 @@ class Controller_Base_Site extends Controller_Template {
 	 */
 	protected function add_script($urls)
 	{
-		$this->scripts = Arr::merge($this->scripts, (array) $urls);
+		$this->scripts = Arr::merge($this->_scripts, (array) $urls);
 	}
 	
 	/**
@@ -79,7 +78,7 @@ class Controller_Base_Site extends Controller_Template {
 	 */
 	protected function add_stylesheet($urls)
 	{
-		$this->stylesheets = Arr::merge($this->stylessheets, (array) $urls);
+		$this->stylesheets = Arr::merge($this->_stylessheets, (array) $urls);
 	}
 
 }
