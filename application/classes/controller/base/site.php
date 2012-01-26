@@ -10,18 +10,6 @@ class Controller_Base_Site extends Controller_Template {
 	public $session;
 	public $user;
 
-	public function __construct(Request $request)
-	{
-		if (Request::$is_ajax)
-		{
-			$this->profiler = NULL;
-			$this->auto_render = FALSE;
-		}
-		
-		$this->session = Session::instance();
-		parent::__construct($request);
-	}
-
 	public function before()
 	{
 		parent::before();
@@ -29,14 +17,16 @@ class Controller_Base_Site extends Controller_Template {
 		// Init variables
 		$this->session = Session::instance();
 		
+		$request = $this->request;
+		
 		// Get the view and set it in the controller
-		$view_name = $this->request->controller . '/' . $this->request->action;
+		$view_name = $request->controller() . '/' . $request->action();
 		$view_name = str_replace('_', '/', $view_name);
 		
 		// Attach directory of route
-		if (isset($this->request->directory)) 
+		if ($request->directory() !== NULL) 
 		{
-			$view_name = $this->request->directory . '/' . $view_name;
+			$view_name = $request->directory() . '/' . $view_name;
 		}
 		
 		$view_name = strtolower($view_name);
@@ -47,8 +37,10 @@ class Controller_Base_Site extends Controller_Template {
 		// Set the default data in the template
 		if ($this->auto_render)
 		{
-			$this->scripts = Kohana::config('app.scripts');
-			$this->stylesheets = Kohana::config('app.stylesheets');
+			$config = Kohana::$config->load('app');
+			
+			$this->scripts = $config->scripts;
+			$this->stylesheets = $config->stylesheets;
 		}
 	}
 
@@ -60,7 +52,7 @@ class Controller_Base_Site extends Controller_Template {
 			// Update template variables
 			$this->template
 				->set('scripts', (array) $this->scripts)
-				->set('styles', (array) $this->stylesheets)
+				->set('stylesheets', (array) $this->stylesheets)
 				->set('content', $this->view);
 		}
 		
@@ -77,7 +69,7 @@ class Controller_Base_Site extends Controller_Template {
 	 */
 	protected function add_script($urls)
 	{
-		$this->scripts = Arr::merge($this->_scripts, (array) $urls);
+		$this->scripts = Arr::merge($this->scripts, (array) $urls);
 	}
 	
 	/**
@@ -87,7 +79,7 @@ class Controller_Base_Site extends Controller_Template {
 	 */
 	protected function add_stylesheet($urls)
 	{
-		$this->stylesheets = Arr::merge($this->_styles, (array) $urls);
+		$this->stylesheets = Arr::merge($this->stylessheets, (array) $urls);
 	}
 
 }
