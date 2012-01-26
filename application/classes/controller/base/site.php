@@ -61,7 +61,7 @@ class Controller_Base_Site extends Controller_Template {
 			$this->template
 				->set('scripts', (array) $this->_scripts)
 				->set('styles', (array) $this->_styles)
-				->set('output', $this->view);
+				->set('content', $this->view);
 		}
 		
 		// Destroy the database connections
