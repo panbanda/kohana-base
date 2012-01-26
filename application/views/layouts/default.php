@@ -7,7 +7,9 @@
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		
+	
+	<link rel="author" href="humans.txt" />
+	
 	<?php foreach ($scripts as $script): ?>
 		<?php echo HTML::script($script); ?>
 	<?php endforeach; ?>

@@ -1,0 +1,30 @@
+
+===========================================
+
+	d8b          888 d8b          
+	Y8P          888 Y8P          
+		     888              
+       8888 888  888 888 888 88888b.  
+       "888 888  888 888 888 888 "88b 
+	888 888  888 888 888 888  888 
+	888 Y88b 888 888 888 888  888 
+	888  "Y88888 888 888 888  888 
+	888      888                  
+       d88P Y8b d88P                  
+     888P"   "Y88P"                   
+
+===========================================
+
+/* MAIN */
+Develop & Main Design: Jonathan Reyes
+Twitter: @jylinman
+Site: http://www.jonathanreyes.com/
+
+/* SITE */
+Last update: 
+Doctype: HTML5
+IDE: Kohana
+
+/* SPECIAL THANKS */
+Designer: 
+Twitter: 
