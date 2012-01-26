@@ -34,7 +34,7 @@ class Controller_Base_Site extends Controller_Template {
 		$view_name = str_replace('_', '/', $view_name);
 		
 		// Attach directory of route
-		if ( isset($this->request->directory)) 
+		if (isset($this->request->directory)) 
 		{
 			$view_name = $this->request->directory . '/' . $view_name;
 		}
@@ -45,7 +45,7 @@ class Controller_Base_Site extends Controller_Template {
 		$this->view = (bool) Kohana::find_file('views', $view_name) ? new View($view_name) : NULL;
 		
 		// Set the default data in the template
-		if ($this->auto_render) 
+		if ($this->auto_render)
 		{
 			$this->scripts = Kohana::config('app.scripts');
 			$this->stylesheets = Kohana::config('app.stylesheets');
@@ -59,15 +59,15 @@ class Controller_Base_Site extends Controller_Template {
 		{
 			// Update template variables
 			$this->template
-				->set('scripts', (array) $this->_scripts)
-				->set('styles', (array) $this->_styles)
+				->set('scripts', (array) $this->scripts)
+				->set('styles', (array) $this->stylesheets)
 				->set('content', $this->view);
 		}
 		
+		parent::after();
+		
 		// Destroy the database connections
 		foreach (Database::$instances as &$conn) unset($conn);
-		
-		parent::after();
 	}
 	
 	/**

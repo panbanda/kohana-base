@@ -1,3 +1,3 @@
-<div id="footer">
+<footer>
 	&copy;<?php echo date('Y'); ?> All Rights Reserved. 
-</div>
+</footer>
