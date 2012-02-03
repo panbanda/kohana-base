@@ -19,3 +19,6 @@
 [submodule "modules/cache"]
 	path = modules/cache
 	url = git://github.com/kohana/cache.git
+[submodule "modules/minify"]
+	path = modules/minify
+	url = git@github.com:jylinman/kohana-minify.git

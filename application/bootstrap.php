@@ -103,7 +103,8 @@ Kohana::modules(array(
 	'database'   => MODPATH.'database',   // Database access
 	'image'      => MODPATH.'image',      // Image manipulation
 	'orm'        => MODPATH.'orm',        // Object Relationship Mapping
-	'pagination' => MODPATH.'pagination',        // Object Relationship Mapping
+	'pagination' => MODPATH.'pagination',
+	'minify'     => MODPATH.'minify',
 	// 'unittest'   => MODPATH.'unittest',   // Unit testing
 	// 'userguide'  => MODPATH.'userguide',  // User guide and API documentation
 	));
