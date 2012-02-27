@@ -94,6 +94,25 @@ Kohana::$log->attach(new Log_File(APPPATH.'logs'));
  */
 Kohana::$config->attach(new Config_File);
 
+Kohana::$environment = Kohana::DEVELOPMENT;
+if (is_file(APPPATH.'environment.php')) require APPPATH.'environment.php';
+
+switch (Kohana::$environment)
+{
+	case Kohana::PRODUCTION: $env = 'production'; break;
+	case Kohana::STAGING: $env = 'staging'; break;
+	case Kohana::TESTING: $env = 'testing'; break;
+	case Kohana::DEVELOPMENT: default: $env = 'localdev'; 
+}
+
+$env_dir = APPPATH.'config/env_'.$env;
+
+// Attach an environment override config directory
+if (is_dir(APPPATH.'config/env_'.$env)) Kohana::$config->attach(new Config_File($env_dir));
+
+// Update the app init for that environment if it exists
+if (is_file($env_dir.'/init.php')) require $env_dir.'/init.php';
+
 /**
  * Enable modules. Modules are referenced by a relative or absolute path.
  */

@@ -1,0 +1,13 @@
+<?php defined('SYSPATH') or die('No direct script access.');
+
+/**
+ * Set current environment.
+ * Possible values:
+ *   Kohana::PRODUCTION
+ *   Kohana::STAGING
+ *   Kohana::DEVELOPMENT
+ *   <mystring>, as long as application/config/env_<mystring>/ exists
+ *   localdev, default setting, points to local databases
+ */
+
+Kohana::$environment = Kohana::DEVELOPMENT;
