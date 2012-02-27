@@ -107,8 +107,19 @@ require APPPATH.'bootstrap'.EXT;
  */
 if (! defined('SUPPRESS_REQUEST'))
 {
-	echo Request::factory()
-		->execute()
-		->send_headers()
-		->body();
+	try
+	{	
+		echo Request::factory()
+			->execute()
+			->send_headers()
+			->body();
+	}
+	
+	catch(HTTP_Exception_404 $e)
+	{
+		echo Request::factory('errors/404')
+			->execute()
+			->send_headers()
+			->body();
+	}
 }
