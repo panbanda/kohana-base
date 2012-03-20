@@ -22,3 +22,6 @@
 [submodule "modules/minify"]
 	path = modules/minify
 	url = git@github.com:jylinman/kohana-minify.git
+[submodule "modules/migrations"]
+	path = modules/migrations
+	url = https://github.com/jmhobbs/kohana-3-migrations.git
