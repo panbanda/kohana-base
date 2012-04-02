@@ -68,7 +68,7 @@ class Controller_Base_Site extends Controller_Template {
 	 */
 	protected function add_script($urls)
 	{
-		$this->scripts = Arr::merge($this->_scripts, (array) $urls);
+		$this->_scripts = Arr::merge($this->_scripts, (array) $urls);
 	}
 	
 	/**
@@ -78,7 +78,7 @@ class Controller_Base_Site extends Controller_Template {
 	 */
 	protected function add_stylesheet($urls)
 	{
-		$this->stylesheets = Arr::merge($this->_stylessheets, (array) $urls);
+		$this->_stylesheets = Arr::merge($this->_stylessheets, (array) $urls);
 	}
 
 }
